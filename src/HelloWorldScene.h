@@ -27,6 +27,8 @@ public:
     Size visibleSize;
     //添加开始的黄色栏
     void addStartLine();
+    //添加结束的绿色栏，占满屏幕
+    void addEndLine();
 };
 
 #endif // __HELLOWORLD_SCENE_H__
