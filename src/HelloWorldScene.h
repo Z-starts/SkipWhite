@@ -2,6 +2,9 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "Block.h"
+
+USING_NS_CC;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -17,6 +20,13 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    /*
+     *黄色栏大小
+     */
+     
+    Size visibleSize;
+    //添加开始的黄色栏
+    void addStartLine();
 };
 
 #endif // __HELLOWORLD_SCENE_H__

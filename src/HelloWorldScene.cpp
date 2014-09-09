@@ -27,7 +27,8 @@ bool HelloWorld::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    visibleSize=CCDirector::getInstance()->getVisibleSize();
+    
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     /////////////////////////////
@@ -75,6 +76,9 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
     
+    addStartLine();
+    
+    
     return true;
 }
 
@@ -91,4 +95,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void HelloWorld::addStartLine()
+{
+    auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 10,Color4B::BLACK);
+    addChild(startLine);
 }
