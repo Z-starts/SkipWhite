@@ -31,6 +31,7 @@
 		1AC6FB32180E99EB004C840B /* libcocosdenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB0F180E9839004C840B /* libcocosdenshion iOS.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		41150C1319BF5D22006B4DD2 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41150C1119BF5D22006B4DD2 /* Block.cpp */; };
 		41C04F0519B34658000A4D15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C04F0419B34658000A4D15 /* OpenGLES.framework */; };
 		41C04F0719B3468D000A4D15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C04F0619B3468D000A4D15 /* UIKit.framework */; };
 		41C04F0919B346EC000A4D15 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C04F0819B346EC000A4D15 /* CoreMotion.framework */; };
@@ -328,6 +329,8 @@
 		1D6058910D05DD3D006BFB54 /* SkipWhite iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SkipWhite iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		41150C1119BF5D22006B4DD2 /* Block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		41150C1219BF5D22006B4DD2 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		41C04F0419B34658000A4D15 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		41C04F0619B3468D000A4D15 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		41C04F0819B346EC000A4D15 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
@@ -445,8 +448,11 @@
 				15A6DA90199CFB1100B56DBF /* AppDelegate.h */,
 				15A6DA91199CFB1100B56DBF /* HelloWorldScene.cpp */,
 				15A6DA92199CFB1100B56DBF /* HelloWorldScene.h */,
+				41150C1119BF5D22006B4DD2 /* Block.cpp */,
+				41150C1219BF5D22006B4DD2 /* Block.h */,
 			);
 			name = src;
+			path = ../src;
 			sourceTree = "<group>";
 		};
 		15A6DA97199CFB8700B56DBF /* res */ = {
@@ -874,6 +880,7 @@
 				15A6DA93199CFB1100B56DBF /* AppDelegate.cpp in Sources */,
 				15A6DA95199CFB1100B56DBF /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				41150C1319BF5D22006B4DD2 /* Block.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);

@@ -100,7 +100,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 //添加黄色开始栏
 void HelloWorld::addStartLine()
 {
-    auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 20,Color4B::BLACK);
+    auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 30,Color4B::BLACK);
     addChild(startLine);
 }
 //添加结束的绿色栏，占满屏幕
