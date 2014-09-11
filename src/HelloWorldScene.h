@@ -29,6 +29,10 @@ public:
     void addStartLine();
     //添加结束的绿色栏，占满屏幕
     void addEndLine();
+    
+    void addNormalLine(int lineIndex);
+    //开始游戏
+    void startGame();
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -9,6 +9,13 @@
 #include "Block.h"
 
 USING_NS_CC;
+Block::Block() {
+    
+}
+
+Block::~Block()
+{
+}
 
 //初始化blocks
 Vector<Block*> * Block::blocks = new Vector<Block*>();
@@ -57,3 +64,13 @@ void Block::removeBlock()
     removeFromParent();
     blocks->eraseObject(this);
 }
+
+void Block::setLineIndex(int index){
+    this->lineIndex=index;
+    
+}
+
+int Block::getLineIndex() const{
+    return this->lineIndex;
+}
+
