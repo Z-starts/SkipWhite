@@ -34,5 +34,7 @@ public:
     
     virtual void setLineIndex(int index);
     virtual int getLineIndex() const;
+    
+    static Vector<Block*> * getBlocks();
 };
 #endif

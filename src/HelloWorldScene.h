@@ -33,6 +33,8 @@ public:
     void addNormalLine(int lineIndex);
     //开始游戏
     void startGame();
+    
+    void moveDown();
 };
 
 #endif // __HELLOWORLD_SCENE_H__

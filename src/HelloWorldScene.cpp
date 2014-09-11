@@ -78,7 +78,36 @@ bool HelloWorld::init()
     
     startGame();
     
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = [this](Touch* t, Event* e)
+    {
+        log("onTouch");
+        auto bs = Block::getBlocks();
+        Block *b;
+        
+        for(auto it = bs->begin(); it != bs->end(); it++)
+        {
+            b = *it;
+            
+            if(b->getLineIndex()==1&&b->getBoundingBox().containsPoint(t->getLocation()))
+            {
+                if(b->getColor()==Color3B::BLACK)
+                {
+                    b->setColor(Color3B::GRAY);
+                    this->moveDown();
+                    break;
+                }
+                else
+                {
+                    MessageBox("GameOver","失败");
+                }
+            }
+        }
+        
+        return false;
+    };
     
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     return true;
 }
 
@@ -132,3 +161,10 @@ void HelloWorld::startGame()
     addNormalLine(2);
     addNormalLine(3);
 }
+
+void HelloWorld::moveDown()
+{
+    
+}
+
+
