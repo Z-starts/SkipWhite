@@ -75,7 +75,11 @@ bool HelloWorld::init()
     //    sprite->runAction(roting);
     //    // add the sprite as a child to this layer
     //    this->addChild(sprite, 0);
-    
+    timerLabel=LabelTTF::create("", "Arial", 24);
+    timerLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
+                                 origin.y + visibleSize.height - 100));
+    timerLabel->setColor(Color3B::RED);
+    this->addChild(timerLabel,1);
     startGame();
     
     auto listener = EventListenerTouchOneByOne::create();
@@ -95,12 +99,19 @@ bool HelloWorld::init()
                 {
                     b->setColor(Color3B::GRAY);
                     this->moveDown();
-                    break;
+                    this->startTimer();
+                }
+                else if(b->getColor()==Color3B::GREEN)
+                {
+                    this->moveDown();
+                    this->stopTimer();
                 }
                 else
                 {
                     MessageBox("GameOver","失败");
+                    Block::blocks->clear();
                 }
+                break;
             }
         }
         
@@ -131,12 +142,14 @@ void HelloWorld::addStartLine()
 {
     auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 30,Color4B::BLACK);
     addChild(startLine);
+    linesCount=0;
 }
 //添加结束的绿色栏，占满屏幕
 void HelloWorld::addEndLine()
 {
     auto b = Block::createWithArgs(Color3B::GREEN, visibleSize, "Game Over", 30, Color4B::BLACK);
     addChild(b);
+    linesCount=0;
 }
 
 //添加普通的黑白块栏
@@ -151,6 +164,7 @@ void HelloWorld::addNormalLine(int lineIndex)
         b->setLineIndex(lineIndex);
         addChild(b);
     }
+    
 }
 
 //开始游戏
@@ -164,7 +178,49 @@ void HelloWorld::startGame()
 
 void HelloWorld::moveDown()
 {
+    linesCount+=1;
+    if(linesCount<10)
+    {
+        addNormalLine(4);
+        auto bs = Block::getBlocks();
+        for(auto it=bs->begin(); it!=bs->end(); it++)
+        {
+            (*it)->moveDownBlock();
+        }
+    }
+    else if(!showEnd)
+    {
+        addEndLine();
+        showEnd = true;
+    }
+}
+
+void HelloWorld::update(float dt)
+{
+    long offset = clock()-startTime;
     
+    timerLabel->setString(StringUtils::format("%g",((double)offset)/1000000));
+}
+
+//开始计时
+void HelloWorld::startTimer()
+{
+    if(!timeRunning)
+    {
+        scheduleUpdate();
+        startTime = clock();
+        timeRunning = true;
+    }
+}
+
+//结束计时
+void HelloWorld::stopTimer()
+{
+    if(timeRunning)
+    {
+        unscheduleUpdate();
+        timeRunning = false;
+    }
 }
 
 

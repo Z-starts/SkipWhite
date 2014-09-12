@@ -35,6 +35,22 @@ public:
     void startGame();
     
     void moveDown();
+    
+    int linesCount;
+    bool showEnd;
+    
+    long startTime;
+    bool timeRunning;
+    
+    //开始计时
+    void startTimer();
+    
+    //结束计时
+    void stopTimer();
+    
+    virtual void update(float dt);
+    
+    CCLabelTTF *timerLabel;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
