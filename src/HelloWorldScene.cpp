@@ -17,11 +17,8 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
-// on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !Layer::init() )
     {
         return false;
@@ -31,11 +28,6 @@ bool HelloWorld::init()
     
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-    
-    // add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -49,33 +41,7 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
-    /////////////////////////////
-    // 3. add your codes below...
-    
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    // auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    //    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-    //                            origin.y + visibleSize.height - label->getContentSize().height));
-    
-    // add the label as a child to this layer
-    //    this->addChild(label, 1);
-    
-    // add "HelloWorld" splash screen"
-    //    auto sprite = Sprite::create("HelloWorld.png");
-    //
-    //    // position the sprite on the center of the screen
-    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    //
-    //    auto roting=CCRepeatForever::create(CCRotateBy::create(1.0f, 360));
-    //
-    //    sprite->runAction(roting);
-    //    // add the sprite as a child to this layer
-    //    this->addChild(sprite, 0);
-    timerLabel=LabelTTF::create("", "Arial", 24);
+    timerLabel=LabelTTF::create("ready?", "Arial", 24);
     timerLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
                                  origin.y + visibleSize.height - 100));
     timerLabel->setColor(Color3B::RED);
