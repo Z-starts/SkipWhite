@@ -156,6 +156,7 @@ void HelloWorld::addEndLine()
 void HelloWorld::addNormalLine(int lineIndex)
 {
     Block *b;
+    srand(time(NULL));
     int blackIndex = rand()%4;
     for(int i=0; i<4; i++)
     {
@@ -179,7 +180,7 @@ void HelloWorld::startGame()
 void HelloWorld::moveDown()
 {
     linesCount+=1;
-    if(linesCount<10)
+    if(linesCount<30)
     {
         addNormalLine(4);
         auto bs = Block::getBlocks();

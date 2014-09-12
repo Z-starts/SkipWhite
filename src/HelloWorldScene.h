@@ -50,7 +50,7 @@ public:
     
     virtual void update(float dt);
     
-    CCLabelTTF *timerLabel;
+    LabelTTF *timerLabel;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
