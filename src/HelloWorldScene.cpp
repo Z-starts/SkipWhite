@@ -55,30 +55,59 @@ bool HelloWorld::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    auto label = LabelTTF::create("Hello World", "Arial", 24);
+    // auto label = LabelTTF::create("Hello World", "Arial", 24);
     
     // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
+    //    label->setPosition(Vec2(origin.x + visibleSize.width/2,
+    //                            origin.y + visibleSize.height - label->getContentSize().height));
     
     // add the label as a child to this layer
-    this->addChild(label, 1);
+    //    this->addChild(label, 1);
     
     // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+    //    auto sprite = Sprite::create("HelloWorld.png");
+    //
+    //    // position the sprite on the center of the screen
+    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    //
+    //    auto roting=CCRepeatForever::create(CCRotateBy::create(1.0f, 360));
+    //
+    //    sprite->runAction(roting);
+    //    // add the sprite as a child to this layer
+    //    this->addChild(sprite, 0);
     
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    startGame();
     
-    auto roting=CCRepeatForever::create(CCRotateBy::create(1.0f, 360));
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = [this](Touch* t, Event* e)
+    {
+        log("onTouch");
+        auto bs = Block::getBlocks();
+        Block *b;
+        
+        for(auto it = bs->begin(); it != bs->end(); it++)
+        {
+            b = *it;
+            
+            if(b->getLineIndex()==1&&b->getBoundingBox().containsPoint(t->getLocation()))
+            {
+                if(b->getColor()==Color3B::BLACK)
+                {
+                    b->setColor(Color3B::GRAY);
+                    this->moveDown();
+                    break;
+                }
+                else
+                {
+                    MessageBox("GameOver","失败");
+                }
+            }
+        }
+        
+        return false;
+    };
     
-    sprite->runAction(roting);
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    
-    addStartLine();
-    
-    
+    Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     return true;
 }
 
@@ -109,3 +138,33 @@ void HelloWorld::addEndLine()
     auto b = Block::createWithArgs(Color3B::GREEN, visibleSize, "Game Over", 30, Color4B::BLACK);
     addChild(b);
 }
+
+//添加普通的黑白块栏
+void HelloWorld::addNormalLine(int lineIndex)
+{
+    Block *b;
+    int blackIndex = rand()%4;
+    for(int i=0; i<4; i++)
+    {
+        b = Block::createWithArgs(blackIndex == i ? Color3B::BLACK : Color3B::WHITE, Size(visibleSize.width/4-1,visibleSize.height/4-1), "", 20, Color4B::BLACK);
+        b->setPosition(i*visibleSize.width/4, lineIndex*visibleSize.height/4);
+        b->setLineIndex(lineIndex);
+        addChild(b);
+    }
+}
+
+//开始游戏
+void HelloWorld::startGame()
+{
+    addStartLine();
+    addNormalLine(1);
+    addNormalLine(2);
+    addNormalLine(3);
+}
+
+void HelloWorld::moveDown()
+{
+    
+}
+
+

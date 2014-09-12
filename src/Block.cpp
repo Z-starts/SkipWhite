@@ -9,6 +9,13 @@
 #include "Block.h"
 
 USING_NS_CC;
+Block::Block() {
+    
+}
+
+Block::~Block()
+{
+}
 
 //初始化blocks
 Vector<Block*> * Block::blocks = new Vector<Block*>();
@@ -16,7 +23,8 @@ Vector<Block*> * Block::blocks = new Vector<Block*>();
 Block* Block::createWithArgs(Color3B color, Size size, std::string label, float fontSize, Color4B textColor)
 {
     auto b = new Block();
-    b->initWithArgs(color, size, label, fontSize, textColor); b->autorelease();
+    b->initWithArgs(color, size, label, fontSize, textColor);
+    b->autorelease();
     
     //将b添加到blocks中
     blocks->pushBack(b);
@@ -57,3 +65,17 @@ void Block::removeBlock()
     removeFromParent();
     blocks->eraseObject(this);
 }
+
+void Block::setLineIndex(int index){
+    this->lineIndex=index;
+    
+}
+
+int Block::getLineIndex() const{
+    return this->lineIndex;
+}
+
+Vector<Block*>* Block::getBlocks(){
+    return Block::blocks;
+}
+
