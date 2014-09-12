@@ -41,7 +41,7 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
-    timerLabel=LabelTTF::create("ready?", "Arial", 24);
+    timerLabel= Label::create("Ready?", "Arial", 30);
     timerLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
                                  origin.y + visibleSize.height - 100));
     timerLabel->setColor(Color3B::RED);
@@ -75,7 +75,6 @@ bool HelloWorld::init()
                 else
                 {
                     MessageBox("GameOver","失败");
-                    Block::blocks->clear();
                 }
                 break;
             }
@@ -108,14 +107,14 @@ void HelloWorld::addStartLine()
 {
     auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 30,Color4B::BLACK);
     addChild(startLine);
-    linesCount=0;
+    startLine->setLineIndex(0);
 }
 //添加结束的绿色栏，占满屏幕
 void HelloWorld::addEndLine()
 {
     auto b = Block::createWithArgs(Color3B::GREEN, visibleSize, "Game Over", 30, Color4B::BLACK);
     addChild(b);
-    linesCount=0;
+    b->setLineIndex(4);
 }
 
 //添加普通的黑白块栏
@@ -131,12 +130,16 @@ void HelloWorld::addNormalLine(int lineIndex)
         b->setLineIndex(lineIndex);
         addChild(b);
     }
-    
+    linesCount++;
 }
 
 //开始游戏
 void HelloWorld::startGame()
 {
+    linesCount = 0;
+    showEnd = false;
+    timeRunning = false;
+    
     addStartLine();
     addNormalLine(1);
     addNormalLine(2);
@@ -145,20 +148,18 @@ void HelloWorld::startGame()
 
 void HelloWorld::moveDown()
 {
-    linesCount+=1;
-    if(linesCount<30)
-    {
+    if (linesCount<30) {
         addNormalLine(4);
-        auto bs = Block::getBlocks();
-        for(auto it=bs->begin(); it!=bs->end(); it++)
-        {
-            (*it)->moveDownBlock();
-        }
-    }
-    else if(!showEnd)
-    {
+    }else if(!showEnd){
         addEndLine();
         showEnd = true;
+    }
+    
+    
+    auto bs = Block::getBlocks();
+    
+    for (auto it = bs->begin(); it!=bs->end(); it++) {
+        (*it)->moveDownBlock();
     }
 }
 

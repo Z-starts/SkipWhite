@@ -49,8 +49,8 @@ public:
     void stopTimer();
     
     virtual void update(float dt);
-    
-    LabelTTF *timerLabel;
+private:
+    Label* timerLabel;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
