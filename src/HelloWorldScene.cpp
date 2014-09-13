@@ -105,7 +105,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 //添加黄色开始栏
 void HelloWorld::addStartLine()
 {
-    auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 30,Color4B::BLACK);
+	auto startLine=Block::createWithArgs(ccColor3B::YELLOW,Size(visibleSize.width,visibleSize.height/4), "",30,ccColor4B::BLACK);
     addChild(startLine);
     startLine->setLineIndex(0);
 }
@@ -167,7 +167,7 @@ void HelloWorld::update(float dt)
 {
     long offset = clock()-startTime;
     
-    timerLabel->setString(StringUtils::format("%g",((double)offset)/1000000));
+    timerLabel->setString(StringUtils::format("%g",((double)offset)/1000));
 }
 
 //开始计时

@@ -9,7 +9,6 @@
 #ifndef SkipWhite_Block_h
 #define SkipWhite_Block_h
 
-#include "CCSprite.h"
 #include "cocos2d.h"
 
 
