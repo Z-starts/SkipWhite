@@ -17,11 +17,8 @@ Scene* HelloWorld::createScene()
     return scene;
 }
 
-// on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !Layer::init() )
     {
         return false;
@@ -31,11 +28,6 @@ bool HelloWorld::init()
     
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-    
-    // add a "close" icon to exit the progress. it's an autorelease object
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
@@ -49,33 +41,11 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
-    /////////////////////////////
-    // 3. add your codes below...
-    
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
-    // auto label = LabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
-    //    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-    //                            origin.y + visibleSize.height - label->getContentSize().height));
-    
-    // add the label as a child to this layer
-    //    this->addChild(label, 1);
-    
-    // add "HelloWorld" splash screen"
-    //    auto sprite = Sprite::create("HelloWorld.png");
-    //
-    //    // position the sprite on the center of the screen
-    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    //
-    //    auto roting=CCRepeatForever::create(CCRotateBy::create(1.0f, 360));
-    //
-    //    sprite->runAction(roting);
-    //    // add the sprite as a child to this layer
-    //    this->addChild(sprite, 0);
-    
+    timerLabel= Label::create("Ready?", "Arial", 30);
+    timerLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
+                                 origin.y + visibleSize.height - 100));
+    timerLabel->setColor(Color3B::RED);
+    this->addChild(timerLabel,1);
     startGame();
     
     auto listener = EventListenerTouchOneByOne::create();
@@ -95,12 +65,18 @@ bool HelloWorld::init()
                 {
                     b->setColor(Color3B::GRAY);
                     this->moveDown();
-                    break;
+                    this->startTimer();
+                }
+                else if(b->getColor()==Color3B::GREEN)
+                {
+                    this->moveDown();
+                    this->stopTimer();
                 }
                 else
                 {
                     MessageBox("GameOver","失败");
                 }
+                break;
             }
         }
         
@@ -131,18 +107,21 @@ void HelloWorld::addStartLine()
 {
     auto startLine=Block::createWithArgs(ccColor3B::YELLOW, Size(visibleSize.width, visibleSize.height/4), "开始", 30,Color4B::BLACK);
     addChild(startLine);
+    startLine->setLineIndex(0);
 }
 //添加结束的绿色栏，占满屏幕
 void HelloWorld::addEndLine()
 {
     auto b = Block::createWithArgs(Color3B::GREEN, visibleSize, "Game Over", 30, Color4B::BLACK);
     addChild(b);
+    b->setLineIndex(4);
 }
 
 //添加普通的黑白块栏
 void HelloWorld::addNormalLine(int lineIndex)
 {
     Block *b;
+    srand(time(NULL));
     int blackIndex = rand()%4;
     for(int i=0; i<4; i++)
     {
@@ -151,11 +130,16 @@ void HelloWorld::addNormalLine(int lineIndex)
         b->setLineIndex(lineIndex);
         addChild(b);
     }
+    linesCount++;
 }
 
 //开始游戏
 void HelloWorld::startGame()
 {
+    linesCount = 0;
+    showEnd = false;
+    timeRunning = false;
+    
     addStartLine();
     addNormalLine(1);
     addNormalLine(2);
@@ -164,7 +148,47 @@ void HelloWorld::startGame()
 
 void HelloWorld::moveDown()
 {
+    if (linesCount<30) {
+        addNormalLine(4);
+    }else if(!showEnd){
+        addEndLine();
+        showEnd = true;
+    }
     
+    
+    auto bs = Block::getBlocks();
+    
+    for (auto it = bs->begin(); it!=bs->end(); it++) {
+        (*it)->moveDownBlock();
+    }
+}
+
+void HelloWorld::update(float dt)
+{
+    long offset = clock()-startTime;
+    
+    timerLabel->setString(StringUtils::format("%g",((double)offset)/1000000));
+}
+
+//开始计时
+void HelloWorld::startTimer()
+{
+    if(!timeRunning)
+    {
+        scheduleUpdate();
+        startTime = clock();
+        timeRunning = true;
+    }
+}
+
+//结束计时
+void HelloWorld::stopTimer()
+{
+    if(timeRunning)
+    {
+        unscheduleUpdate();
+        timeRunning = false;
+    }
 }
 
 

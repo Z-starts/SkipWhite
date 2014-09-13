@@ -17,8 +17,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLViewImpl::create("Skip White");
-		glview->setFrameSize(320,480);
 		director->setOpenGLView(glview);
+        glview->setFrameSize(320,480);
 		glview->setDesignResolutionSize(320,480,ResolutionPolicy::SHOW_ALL);
     }
 

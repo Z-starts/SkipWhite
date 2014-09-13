@@ -36,5 +36,7 @@ public:
     virtual int getLineIndex() const;
     
     static Vector<Block*> * getBlocks();
+    
+    void moveDownBlock();
 };
 #endif

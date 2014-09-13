@@ -78,4 +78,14 @@ int Block::getLineIndex() const{
 Vector<Block*>* Block::getBlocks(){
     return Block::blocks;
 }
-
+void Block::moveDownBlock()
+{
+    this->lineIndex--;
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    runAction(Sequence::create(MoveTo::create(0.1f, Point(getPositionX(), lineIndex*visibleSize.height/4)),
+                               CallFunc::create([this]()
+                                                {
+                                                    if(lineIndex<0)
+                                                        this->removeBlock();
+                                                }), NULL));
+}
