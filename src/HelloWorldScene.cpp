@@ -1,6 +1,5 @@
 #include "HelloWorldScene.h"
 
-USING_NS_CC;
 
 Scene* HelloWorld::createScene()
 {
@@ -23,6 +22,15 @@ bool HelloWorld::init()
     {
         return false;
     }
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BACKGROUND_MULIC_FILE);
+    SimpleAudioEngine::getInstance()->preloadEffect(CLICK_MULIC_FILE);
+    
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
+    
+    std::string fullpath = FileUtils::getInstance()->fullPathForFilename(BACKGROUND_MULIC_FILE);
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(fullpath.c_str(),true);
+    
     
     visibleSize=CCDirector::getInstance()->getVisibleSize();
     
@@ -48,10 +56,12 @@ bool HelloWorld::init()
     this->addChild(timerLabel,1);
     startGame();
     
+    
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [this](Touch* t, Event* e)
     {
         log("onTouch");
+        m_nSoundId=SimpleAudioEngine::getInstance()->playEffect(std::string(FileUtils::getInstance()->fullPathForFilename(CLICK_MULIC_FILE)).c_str(), false);
         auto bs = Block::getBlocks();
         Block *b;
         
@@ -66,6 +76,7 @@ bool HelloWorld::init()
                     b->setColor(Color3B::GRAY);
                     this->moveDown();
                     this->startTimer();
+                 
                 }
                 else if(b->getColor()==Color3B::GREEN)
                 {
@@ -75,6 +86,7 @@ bool HelloWorld::init()
                 else
                 {
                     MessageBox("GameOver","失败");
+                    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
                 }
                 break;
             }
@@ -141,6 +153,7 @@ void HelloWorld::startGame()
     timeRunning = false;
     
     addStartLine();
+    
     addNormalLine(1);
     addNormalLine(2);
     addNormalLine(3);

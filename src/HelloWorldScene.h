@@ -2,9 +2,15 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "SimpleAudioEngine.h"
 #include "Block.h"
 
+
+#define BACKGROUND_MULIC_FILE "music/music_taohuayuanBG.mp3"
+#define CLICK_MULIC_FILE "sounds/sound_click.mp3"
+
 USING_NS_CC;
+using namespace CocosDenshion;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -49,6 +55,8 @@ public:
     void stopTimer();
     
     virtual void update(float dt);
+    //点击音效id
+    int    m_nSoundId;
 private:
     Label* timerLabel;
 };

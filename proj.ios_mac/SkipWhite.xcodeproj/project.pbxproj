@@ -35,6 +35,12 @@
 		41C04F0519B34658000A4D15 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C04F0419B34658000A4D15 /* OpenGLES.framework */; };
 		41C04F0719B3468D000A4D15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C04F0619B3468D000A4D15 /* UIKit.framework */; };
 		41C04F0919B346EC000A4D15 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C04F0819B346EC000A4D15 /* CoreMotion.framework */; };
+		41FD17B419CEB7EF00EC5DA4 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FD17AF19CEB7EF00EC5DA4 /* CloseNormal.png */; };
+		41FD17B519CEB7EF00EC5DA4 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FD17B019CEB7EF00EC5DA4 /* CloseSelected.png */; };
+		41FD17B619CEB7EF00EC5DA4 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 41FD17B119CEB7EF00EC5DA4 /* fonts */; };
+		41FD17B719CEB7EF00EC5DA4 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 41FD17B219CEB7EF00EC5DA4 /* HelloWorld.png */; };
+		41FD17B819CEB7EF00EC5DA4 /* music in Resources */ = {isa = PBXBuildFile; fileRef = 41FD17B319CEB7EF00EC5DA4 /* music */; };
+		41FD17BA19CEB83000EC5DA4 /* sounds in Resources */ = {isa = PBXBuildFile; fileRef = 41FD17B919CEB83000EC5DA4 /* sounds */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
 		503AE10017EB989F00D1A890 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FB17EB989F00D1A890 /* AppController.mm */; };
 		503AE10117EB989F00D1A890 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
@@ -334,6 +340,12 @@
 		41C04F0419B34658000A4D15 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		41C04F0619B3468D000A4D15 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		41C04F0819B346EC000A4D15 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		41FD17AF19CEB7EF00EC5DA4 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
+		41FD17B019CEB7EF00EC5DA4 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
+		41FD17B119CEB7EF00EC5DA4 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		41FD17B219CEB7EF00EC5DA4 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
+		41FD17B319CEB7EF00EC5DA4 /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
+		41FD17B919CEB83000EC5DA4 /* sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sounds; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		503AE0F717EB97AB00D1A890 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503AE0FA17EB989F00D1A890 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = SOURCE_ROOT; };
@@ -458,12 +470,19 @@
 		15A6DA97199CFB8700B56DBF /* res */ = {
 			isa = PBXGroup;
 			children = (
+				41FD17B919CEB83000EC5DA4 /* sounds */,
+				41FD17AF19CEB7EF00EC5DA4 /* CloseNormal.png */,
+				41FD17B019CEB7EF00EC5DA4 /* CloseSelected.png */,
+				41FD17B119CEB7EF00EC5DA4 /* fonts */,
+				41FD17B219CEB7EF00EC5DA4 /* HelloWorld.png */,
+				41FD17B319CEB7EF00EC5DA4 /* music */,
 				15A6DA98199CFB9800B56DBF /* CloseNormal.png */,
 				15A6DA99199CFB9800B56DBF /* CloseSelected.png */,
 				15A6DA9A199CFB9800B56DBF /* HelloWorld.png */,
 			);
 			name = res;
-			sourceTree = "<group>";
+			path = ../res;
+			sourceTree = SOURCE_ROOT;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
@@ -842,20 +861,26 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				41FD17BA19CEB83000EC5DA4 /* sounds in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				41FD17B819CEB7EF00EC5DA4 /* music in Resources */,
 				15A6DA9D199CFB9800B56DBF /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				41FD17B719CEB7EF00EC5DA4 /* HelloWorld.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				41FD17B619CEB7EF00EC5DA4 /* fonts in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				41FD17B419CEB7EF00EC5DA4 /* CloseNormal.png in Resources */,
 				15A6DA9B199CFB9800B56DBF /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				41FD17B519CEB7EF00EC5DA4 /* CloseSelected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
