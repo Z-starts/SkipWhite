@@ -15,6 +15,12 @@ using namespace CocosDenshion;
 class HelloWorld : public cocos2d::Layer
 {
 public:
+	//其它函数省略
+	virtual void visit(Renderer* renderer, const Mat4 &parentTransform, uint32_t parentFlags); 
+    //virtual void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, bool transformUpdated) override;
+	void onDraw();
+
+
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
 
@@ -58,6 +64,8 @@ public:
     //点击音效id
     int    m_nSoundId;
 private:
+	CustomCommand _command;
+
     Label* timerLabel;
 };
 
