@@ -8166,10 +8166,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../external/chipmunk/include/chipmunk $(SRCROOT)/../external";
 			};
@@ -8201,10 +8201,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/.. $(SRCROOT)/../cocos $(SRCROOT)/../cocos/editor-support $(SRCROOT)/../external/chipmunk/include/chipmunk $(SRCROOT)/../external";
 				VALIDATE_PRODUCT = YES;
@@ -8349,6 +8349,7 @@
 					"/Applications/Xcode\\ 2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -8361,6 +8362,7 @@
 					"/Applications/Xcode\\ 2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

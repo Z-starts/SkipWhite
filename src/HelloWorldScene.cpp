@@ -107,8 +107,8 @@ bool HelloWorld::init()
 	{
 	log("onTouch");
 	m_nSoundId=SimpleAudioEngine::getInstance()->playEffect(std::string(FileUtils::getInstance()->fullPathForFilename(CLICK_MULIC_FILE)).c_str(), false);
-	auto bs = Block::getBlocks();
-	Block *b;
+	auto bs = WT_Block::getBlocks();
+	WT_Block *b;
 
 	for(auto it = bs->begin(); it != bs->end(); it++)
 	{
@@ -162,14 +162,14 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 //添加黄色开始栏
 void HelloWorld::addStartLine()
 {
-	auto startLine=Block::createWithArgs(ccColor3B::YELLOW,Size(visibleSize.width,visibleSize.height/4), "",30,ccColor4B::BLACK);
+	auto startLine= WT_Block::createWithArgs(ccColor3B::YELLOW,Size(visibleSize.width,visibleSize.height/4), "",30,ccColor4B::BLACK);
 	addChild(startLine);
 	startLine->setLineIndex(0);
 }
 //添加结束的绿色栏，占满屏幕
 void HelloWorld::addEndLine()
 {
-	auto b = Block::createWithArgs(Color3B::GREEN, visibleSize, "Game Over", 30, Color4B::BLACK);
+	auto b = WT_Block::createWithArgs(Color3B::GREEN, visibleSize, "Game Over", 30, Color4B::BLACK);
 	addChild(b);
 	b->setLineIndex(4);
 }
@@ -177,12 +177,12 @@ void HelloWorld::addEndLine()
 //添加普通的黑白块栏
 void HelloWorld::addNormalLine(int lineIndex)
 {
-	Block *b;
+	WT_Block *b;
 	srand(time(NULL));
 	int blackIndex = rand()%4;
 	for(int i=0; i<4; i++)
 	{
-		b = Block::createWithArgs(blackIndex == i ? Color3B::BLACK : Color3B::WHITE, Size(visibleSize.width/4-1,visibleSize.height/4-1), "", 20, Color4B::BLACK);
+		b = WT_Block::createWithArgs(blackIndex == i ? Color3B::BLACK : Color3B::WHITE, Size(visibleSize.width/4-1,visibleSize.height/4-1), "", 20, Color4B::BLACK);
 		b->setPosition(i*visibleSize.width/4, lineIndex*visibleSize.height/4);
 		b->setLineIndex(lineIndex);
 		addChild(b);
@@ -214,7 +214,7 @@ void HelloWorld::moveDown()
 	}
 
 
-	auto bs = Block::getBlocks();
+	auto bs = WT_Block::getBlocks();
 
 	for (auto it = bs->begin(); it!=bs->end(); it++) {
 		(*it)->moveDownBlock();

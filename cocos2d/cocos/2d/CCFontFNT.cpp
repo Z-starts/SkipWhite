@@ -431,7 +431,7 @@ std::set<unsigned int>* BMFontConfiguration::parseBinaryConfigFile(unsigned char
              */
 
             const char *value = (const char *)pData;
-            CCASSERT(strlen(value) < blockSize, "Block size should be less then string");
+            CCASSERT(strlen(value) < blockSize, "WT_Block size should be less then string");
 
             _atlasName = FileUtils::getInstance()->fullPathFromRelativeFile(value, controlFile);
         }

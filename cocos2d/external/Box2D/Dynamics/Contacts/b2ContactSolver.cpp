@@ -367,7 +367,7 @@ void b2ContactSolver::SolveVelocityConstraints()
 		}
 		else
 		{
-			// Block solver developed in collaboration with Dirk Gregorius (back in 01/07 on Box2D_Lite).
+			// WT_Block solver developed in collaboration with Dirk Gregorius (back in 01/07 on Box2D_Lite).
 			// Build the mini LCP for this contact patch
 			//
 			// vn = A * x + b, vn >= 0, , vn >= 0, x >= 0 and vn_i * x_i = 0 with i = 1..2

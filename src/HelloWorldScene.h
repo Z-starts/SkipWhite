@@ -3,14 +3,14 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
-#include "Block.h"
+#include "WT_Block.h"
 
 
 #define BACKGROUND_MULIC_FILE "music/music_taohuayuanBG.mp3"
 #define CLICK_MULIC_FILE "sounds/sound_click.mp3"
 
 USING_NS_CC;
-using namespace CocosDenshion;
+//using namespace CocosDenshion;
 
 class HelloWorld : public cocos2d::Layer
 {

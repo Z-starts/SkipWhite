@@ -1,28 +1,28 @@
 //
-//  Block.cpp
+//  WT_Block.cpp
 //  SkipWhite
 //
 //  Created by 钟星星 on 14-9-9.
 //
 //
 
-#include "Block.h"
+#include "WT_Block.h"
 
 USING_NS_CC;
-Block::Block() {
+WT_Block::WT_Block() {
     
 }
 
-Block::~Block()
+WT_Block::~WT_Block()
 {
 }
 
 //初始化blocks
-Vector<Block*> * Block::blocks = new Vector<Block*>();
+Vector<WT_Block *> *WT_Block::blocks = new Vector<WT_Block *>();
 
-Block* Block::createWithArgs(Color3B color, Size size, std::string label, float fontSize, Color4B textColor)
+WT_Block *WT_Block::createWithArgs(Color3B color, Size size, std::string label, float fontSize, Color4B textColor)
 {
-    auto b = new Block();
+    auto b = new WT_Block();
     b->initWithArgs(color, size, label, fontSize, textColor);
     b->autorelease();
     
@@ -33,7 +33,7 @@ Block* Block::createWithArgs(Color3B color, Size size, std::string label, float 
 }
 
 //初始化参数：方块颜色、方块大小、字、字体大小、字体颜色
-bool Block::initWithArgs(Color3B color, Size size, std::string label, float fontSize, Color4B textColor)
+bool WT_Block::initWithArgs(Color3B color, Size size, std::string label, float fontSize, Color4B textColor)
 {
     
     Sprite::init();
@@ -60,25 +60,25 @@ bool Block::initWithArgs(Color3B color, Size size, std::string label, float font
 }
 
 //从Vector中移除blocks
-void Block::removeBlock()
+void WT_Block::removeBlock()
 {
     removeFromParent();
     blocks->eraseObject(this);
 }
 
-void Block::setLineIndex(int index){
+void WT_Block::setLineIndex(int index){
     this->lineIndex=index;
     
 }
 
-int Block::getLineIndex() const{
+int WT_Block::getLineIndex() const{
     return this->lineIndex;
 }
 
-Vector<Block*>* Block::getBlocks(){
-    return Block::blocks;
+Vector<WT_Block *>*WT_Block::getBlocks(){
+    return WT_Block::blocks;
 }
-void Block::moveDownBlock()
+void WT_Block::moveDownBlock()
 {
     this->lineIndex--;
     Size visibleSize = Director::getInstance()->getVisibleSize();

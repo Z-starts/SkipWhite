@@ -476,7 +476,7 @@ static void GetModulationValue(int x,
  @Input			YPos	Pixel Y position
  @Input			XPos	Pixel X position
  @Returns		The twiddled offset of the pixel
- @Description	Given the Block (or pixel) coordinates and the dimension of
+ @Description	Given the WT_Block (or pixel) coordinates and the dimension of
  the texture in blocks (or pixels) this returns the twiddled
  offset of the block (or pixel) from the start of the map.
  

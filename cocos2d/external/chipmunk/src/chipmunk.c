@@ -266,7 +266,7 @@ cpConvexHull(int count, cpVect *verts, cpVect *result, int *first, cpFloat tol)
 	return resultCount;
 }
 
-//MARK: Alternate Block Iterators
+//MARK: Alternate WT_Block Iterators
 
 #if defined(__has_extension)
 #if __has_extension(blocks)

@@ -317,7 +317,7 @@ public:
     virtual void* Alloc() {
         if ( !_root ) {
             // Need a new block.
-            Block* block = new Block();
+            WT_Block * block = new WT_Block();
             _blockPtrs.Push( block );
 
             for( int i=0; i<COUNT-1; ++i ) {
@@ -369,10 +369,10 @@ private:
         Chunk*  next;
         char    mem[SIZE];
     };
-    struct Block {
+    struct WT_Block {
         Chunk chunk[COUNT];
     };
-    DynArray< Block*, 10 > _blockPtrs;
+    DynArray< WT_Block *, 10 > _blockPtrs;
     Chunk* _root;
 
     int _currentAllocs;

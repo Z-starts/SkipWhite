@@ -46,7 +46,7 @@
 // Cdot = = -dot(ax1, v1) - dot(cross(d + r1, ax1), w1) + dot(ax1, v2) + dot(cross(r2, ax1), v2)
 // J = [-ax1 -cross(d+r1,ax1) ax1 cross(r2,ax1)]
 
-// Block Solver
+// WT_Block Solver
 // We develop a block solver that includes the joint limit. This makes the limit stiff (inelastic) even
 // when the mass has poor distribution (leading to large torques about the joint anchor points).
 //
