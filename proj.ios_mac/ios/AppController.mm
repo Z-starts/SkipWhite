@@ -57,6 +57,10 @@ static AppDelegate s_sharedApplication;
     _viewController.wantsFullScreenLayout = YES;
     _viewController.view = eaglView;
 
+
+    [window makeKeyAndVisible];
+
+
     // Set RootViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
     {
@@ -69,7 +73,7 @@ static AppDelegate s_sharedApplication;
         [window setRootViewController:_viewController];
     }
 
-    [window makeKeyAndVisible];
+
 
     [[UIApplication sharedApplication] setStatusBarHidden:true];
 
